@@ -47,6 +47,8 @@ struct Directory <: AbstractFileProvider
     end
 end
 
+Base.iterate(d::Directory, state=1) = state <= length(d.files) ? (File(d.files[state]; second_in_pair=d.second_in_pair), state+1) : nothing
+
 """
     AbstractSource
 """
